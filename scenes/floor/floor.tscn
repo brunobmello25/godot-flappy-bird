@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmw60jj7urdmh"]
+
+[ext_resource type="Texture2D" uid="uid://bnoyg7yn0tnha" path="res://assets/sprites/base.png" id="1_kapor"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b23p0"]
+size = Vector2(336, 112)
+
+[node name="Floor" type="StaticBody2D"]
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("1_kapor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b23p0")

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://v7e54201h2g3"]
+
+[ext_resource type="Texture2D" uid="uid://bdcs0tstpipom" path="res://assets/sprites/background-day.png" id="1_tts55"]
+[ext_resource type="PackedScene" uid="uid://c2pd8s2xclse1" path="res://scenes/player/player.tscn" id="2_n83x4"]
+[ext_resource type="PackedScene" uid="uid://cmw60jj7urdmh" path="res://scenes/floor/floor.tscn" id="3_gutum"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background-day" type="Sprite2D" parent="."]
+position = Vector2(135, 240)
+texture = ExtResource("1_tts55")
+
+[node name="Player" parent="." instance=ExtResource("2_n83x4")]
+position = Vector2(135, 240)
+
+[node name="Floor" parent="." instance=ExtResource("3_gutum")]
+position = Vector2(135, 480)
