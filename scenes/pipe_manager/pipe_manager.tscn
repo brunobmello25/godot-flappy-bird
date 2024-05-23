@@ -11,7 +11,7 @@ pipe_scene = ExtResource("2_mejyx")
 position = Vector2(303, 0)
 
 [node name="BottomPlacement" type="Marker2D" parent="."]
-position = Vector2(303, 480)
+position = Vector2(303, 424)
 
 [node name="PipesContainer" type="Node2D" parent="."]
 
