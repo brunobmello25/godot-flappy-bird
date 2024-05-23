@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://sgpwv5o7it8y"]
+[gd_scene load_steps=4 format=3 uid="uid://sgpwv5o7it8y"]
 
 [ext_resource type="Texture2D" uid="uid://dhb3j4bdsdono" path="res://assets/sprites/pipe-green.png" id="1_e4go0"]
+[ext_resource type="Script" path="res://scenes/pipe/pipe.gd" id="1_igimc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anhqu"]
 size = Vector2(46, 319)
 
 [node name="Pipe" type="Area2D"]
+script = ExtResource("1_igimc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e4go0")

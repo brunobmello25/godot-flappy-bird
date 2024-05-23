@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsu2hyxp0qmyc"]
+
+[ext_resource type="Script" path="res://scenes/pipe_manager/pipe_manager.gd" id="1_51yto"]
+[ext_resource type="PackedScene" uid="uid://sgpwv5o7it8y" path="res://scenes/pipe/pipe.tscn" id="2_mejyx"]
+
+[node name="PipeManager" type="Node2D"]
+script = ExtResource("1_51yto")
+pipe_scene = ExtResource("2_mejyx")
+
+[node name="TopPlacement" type="Marker2D" parent="."]
+position = Vector2(303, 0)
+
+[node name="BottomPlacement" type="Marker2D" parent="."]
+position = Vector2(303, 480)
+
+[node name="PipesContainer" type="Node2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://v7e54201h2g3"]
+[gd_scene load_steps=5 format=3 uid="uid://v7e54201h2g3"]
 
 [ext_resource type="Texture2D" uid="uid://bdcs0tstpipom" path="res://assets/sprites/background-day.png" id="1_tts55"]
 [ext_resource type="PackedScene" uid="uid://c2pd8s2xclse1" path="res://scenes/player/player.tscn" id="2_n83x4"]
 [ext_resource type="PackedScene" uid="uid://cmw60jj7urdmh" path="res://scenes/floor/floor.tscn" id="3_gutum"]
+[ext_resource type="PackedScene" uid="uid://bsu2hyxp0qmyc" path="res://scenes/pipe_manager/pipe_manager.tscn" id="4_7m20u"]
 
 [node name="World" type="Node2D"]
 
@@ -14,4 +15,7 @@ texture = ExtResource("1_tts55")
 position = Vector2(135, 240)
 
 [node name="Floor" parent="." instance=ExtResource("3_gutum")]
+z_index = 1
 position = Vector2(135, 480)
+
+[node name="PipeManager" parent="." instance=ExtResource("4_7m20u")]
