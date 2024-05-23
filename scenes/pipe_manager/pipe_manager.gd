@@ -17,15 +17,15 @@ func _process(delta: float):
 	move_pipes(delta)
 
 func spawn_pipes() -> void:
-	pass
+	var top_pipe = pipe_scene.instantiate()
+	top_pipe.position.x = top_placement.position.x
+	top_pipe.position.y = max_top_height
+	top_pipe.rotation_degrees = 180
+	pipes_container.add_child(top_pipe)
 
 func move_pipes(delta: float) -> void:
 	for pipe in pipes_container.get_children():
 		pipe.position.x -= speed * delta
 
 func _on_timer_timeout():
-	var top_pipe = pipe_scene.instantiate()
-	top_pipe.position.x = top_placement.position.x
-	top_pipe.position.y = max_top_height
-	top_pipe.rotation_degrees = 180
-	pipes_container.add_child(top_pipe)
+	spawn_pipes()
