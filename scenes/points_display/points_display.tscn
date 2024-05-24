@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://6vws33mvmdbp"]
+
+[ext_resource type="Script" path="res://scenes/points_display/points_display.gd" id="1_ujcea"]
+[ext_resource type="FontFile" uid="uid://bsh3y3hljm2i2" path="res://assets/fonts/PublicPixel-z84yD.ttf" id="1_v1va0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_smela"]
+font = ExtResource("1_v1va0")
+font_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 2)
+
+[node name="PointsDisplay" type="CanvasLayer"]
+script = ExtResource("1_ujcea")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="Control"]
+layout_mode = 1
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+
+[node name="Label" type="Label" parent="Control/Control/MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_smela")
+horizontal_alignment = 1
+vertical_alignment = 1

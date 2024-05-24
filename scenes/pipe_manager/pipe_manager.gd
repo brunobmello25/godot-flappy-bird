@@ -3,8 +3,10 @@ extends Node2D
 @onready var top_placement: Marker2D = $TopPlacement
 @onready var bottom_placement: Marker2D = $BottomPlacement
 @onready var pipes_container: Node2D = $PipesContainer
+@onready var player_points_container: Node2D = $PlayerPointsContainer
 
 @export var pipe_scene: PackedScene
+@export var player_point_scene: PackedScene
 
 var min_offset = -120
 var max_offset = 120
@@ -21,9 +23,10 @@ func _process(delta: float):
 
 
 func reset():
-	# clear all spawned pipes inside the pipes_container node
 	for pipe in pipes_container.get_children():
 		pipe.queue_free()
+	for player_point in player_points_container.get_children():
+		player_point.queue_free()
 
 
 func spawn_pipes() -> void:
@@ -34,6 +37,11 @@ func spawn_pipes() -> void:
 
 		pipes_container.add_child(top_pipe)
 		pipes_container.add_child(bottom_pipe)
+
+		var player_point = player_point_scene.instantiate()
+		player_point.position.x = top_pipe.position.x
+
+		player_points_container.add_child(player_point)
 
 
 func _build_top_pipe(offset: float):
@@ -59,6 +67,8 @@ func move_pipes(delta: float) -> void:
 	if GameManager.state == GameManager.State.PLAYING:
 		for pipe in pipes_container.get_children():
 			pipe.position.x -= speed * delta
+		for player_point in player_points_container.get_children():
+			player_point.position.x -= speed * delta
 
 
 func _on_timer_timeout():

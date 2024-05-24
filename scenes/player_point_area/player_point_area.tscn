@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmxciw031pi0r"]
+
+[ext_resource type="Script" path="res://scenes/player_point_area/player_point_area.gd" id="1_76lr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jmr3i"]
+size = Vector2(4, 503)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_j0rl2"]
+
+[node name="PlayerPointArea" type="Area2D"]
+script = ExtResource("1_76lr5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 241.5)
+shape = SubResource("RectangleShape2D_jmr3i")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+texture = SubResource("CanvasTexture_j0rl2")
+polygon = PackedVector2Array(-2, -10, -2, 493, 2, 493, 2, -10)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

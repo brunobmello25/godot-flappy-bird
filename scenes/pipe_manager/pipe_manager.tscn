@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsu2hyxp0qmyc"]
+[gd_scene load_steps=4 format=3 uid="uid://bsu2hyxp0qmyc"]
 
 [ext_resource type="Script" path="res://scenes/pipe_manager/pipe_manager.gd" id="1_51yto"]
 [ext_resource type="PackedScene" uid="uid://sgpwv5o7it8y" path="res://scenes/pipe/pipe.tscn" id="2_mejyx"]
+[ext_resource type="PackedScene" uid="uid://bmxciw031pi0r" path="res://scenes/player_point_area/player_point_area.tscn" id="3_2l4i3"]
 
 [node name="PipeManager" type="Node2D"]
 script = ExtResource("1_51yto")
 pipe_scene = ExtResource("2_mejyx")
+player_point_scene = ExtResource("3_2l4i3")
 
 [node name="TopPlacement" type="Marker2D" parent="."]
 position = Vector2(303, 0)
@@ -18,5 +20,7 @@ position = Vector2(303, 424)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5
 autostart = true
+
+[node name="PlayerPointsContainer" type="Node2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

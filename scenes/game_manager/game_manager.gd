@@ -2,10 +2,13 @@ extends Node2D
 
 signal player_died
 signal reset
+signal player_scored_point
 
 enum State { PLAYING, DEAD }
 
 var state: State = State.PLAYING
+
+var player_score = 0
 
 
 func _process(_delta):
@@ -26,4 +29,10 @@ func _handle_exit() -> void:
 func _handle_reset() -> void:
 	if Input.is_action_just_pressed("reset") and state == State.DEAD:
 		state = State.PLAYING
+		player_score = 0
 		reset.emit()
+
+
+func score_point() -> void:
+	player_score += 1
+	player_scored_point.emit()
