@@ -13,20 +13,27 @@ var speed = 120
 
 
 func _ready():
-	pass
+	GameManager.reset.connect(reset)
 
 
 func _process(delta: float):
 	move_pipes(delta)
 
 
-func spawn_pipes() -> void:
-	var offset = get_random_offset()
-	var top_pipe = _build_top_pipe(offset)
-	var bottom_pipe = _build_bottom_pipe(offset)
+func reset():
+	# clear all spawned pipes inside the pipes_container node
+	for pipe in pipes_container.get_children():
+		pipe.queue_free()
 
-	pipes_container.add_child(top_pipe)
-	pipes_container.add_child(bottom_pipe)
+
+func spawn_pipes() -> void:
+	if GameManager.state == GameManager.State.PLAYING:
+		var offset = get_random_offset()
+		var top_pipe = _build_top_pipe(offset)
+		var bottom_pipe = _build_bottom_pipe(offset)
+
+		pipes_container.add_child(top_pipe)
+		pipes_container.add_child(bottom_pipe)
 
 
 func _build_top_pipe(offset: float):
@@ -49,8 +56,9 @@ func get_random_offset() -> float:
 
 
 func move_pipes(delta: float) -> void:
-	for pipe in pipes_container.get_children():
-		pipe.position.x -= speed * delta
+	if GameManager.state == GameManager.State.PLAYING:
+		for pipe in pipes_container.get_children():
+			pipe.position.x -= speed * delta
 
 
 func _on_timer_timeout():

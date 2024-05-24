@@ -12,6 +12,7 @@ position = Vector2(135, 240)
 texture = ExtResource("1_tts55")
 
 [node name="Player" parent="." instance=ExtResource("2_n83x4")]
+z_index = 1
 position = Vector2(135, 240)
 
 [node name="Floor" parent="." instance=ExtResource("3_gutum")]
